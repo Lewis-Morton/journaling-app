@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 from decouple import config
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -66,6 +68,14 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOW_CREDENTIALS = True
+
+# Sentry connection
+sentry_sdk.init(
+    dsn='https://c41945a95612efac36926b6e752af71f@o4510306672771072.ingest.de.sentry.io/4510306685550672',
+    integrations = [DjangoIntegration()],
+    traces_sample_rate=1.0, # Reduce in production do to potential cost
+    send_default_pii=True # Possibly remove in production due to privacy concerns
+)
 
 ROOT_URLCONF = 'mental_health_journal.urls'
 

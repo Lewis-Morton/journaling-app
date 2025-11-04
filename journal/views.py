@@ -6,6 +6,8 @@ from.models import User
 from.serializers import JournalEntrySerializer
 from.serializers import UserSerializer
 from.serializers import RegisterSerializer
+from ratelimit.decorators import ratelimit
+from django.utils.decorators import method_decorator
 
 
 
@@ -14,6 +16,7 @@ from.serializers import RegisterSerializer
 # Views for journalentry model
 
 # These views handle CRUD operations on journal entries
+@method_decorator(ratelimit(key='ip', rate='10/m', block=True), name='dispatch')
 class JournalCreateAPIView(generics.CreateAPIView):
     queryset = JournalEntry.objects.all()
     serializer_class = JournalEntrySerializer
@@ -35,6 +38,7 @@ class JournalDestroyAPIView(generics.DestroyAPIView):
 # Registers new user
 
 # Registers new users
+@method_decorator(ratelimit(key='ip', rate='10/m', block=True), name='dispatch')
 class UserRegisterAPIView(generics.CreateAPIView):
     queryset= User.objects.all()
     serializer_class = RegisterSerializer

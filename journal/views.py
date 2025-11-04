@@ -6,8 +6,8 @@ from.models import User
 from.serializers import JournalEntrySerializer
 from.serializers import UserSerializer
 from.serializers import RegisterSerializer
-from ratelimit.decorators import ratelimit
 from django.utils.decorators import method_decorator
+from django_ratelimit.decorators import ratelimit
 
 
 

@@ -62,9 +62,9 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'https://www.mindly.com' # Production frontend
+    'https://www.mindly.com', # Production frontend
     "http://localhost:19006", # Expo default development server
-    "http://127.0.0.1:19006", # Numeric equivalent to Expo default
+    "http://127.0.0.1:19006" # Numeric equivalent to Expo default
 ]
 
 CORS_ALLOW_CREDENTIALS = True

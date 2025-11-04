@@ -8,6 +8,7 @@ from .views import UserRegisterAPIView
 from .views import UserListAPIView
 from .views import UserRetrieveUpdateAPIView
 
+
 urlpatterns = [
     # JWT Authentication
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
@@ -22,6 +23,8 @@ urlpatterns = [
     # User endpoints
     path('users/register/', UserRegisterAPIView.as_view(), name='user-create'),
     path('users/', UserListAPIView.as_view(), name='user-list'),
-    path('users/me/', UserRetrieveUpdateAPIView.as_view(), name='user-profile')
+    path('users/me/', UserRetrieveUpdateAPIView.as_view(), name='user-profile'),
 ]
+
+
 

@@ -5,12 +5,14 @@ from.models import JournalEntry
 from.models import User
 from.serializers import JournalEntrySerializer
 from.serializers import UserSerializer
+from.serializers import RegisterSerializer
 
 
 
 # Create your views here.
 
 # Views for journalentry model
+
 # These views handle CRUD operations on journal entries
 class JournalCreateAPIView(generics.CreateAPIView):
     queryset = JournalEntry.objects.all()
@@ -29,6 +31,14 @@ class JournalDestroyAPIView(generics.DestroyAPIView):
     serializer_class = JournalEntrySerializer
 
 # User Views
+
+# Registers new user
+
+# Registers new users
+class UserRegisterAPIView(generics.CreateAPIView):
+    queryset= User.objects.all()
+    serializer_class = RegisterSerializer
+    permission_classes = [permissions.AllowAny]
 
 # List all users (admin -only)
 class UserListAPIView(generics.ListAPIView):

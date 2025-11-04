@@ -1,29 +1,43 @@
 from rest_framework import serializers
-from.models import User, JournalEntry, Conversation, Participant, ChatMessage
+from .models import User, JournalEntry, Conversation, Participant, ChatMessage
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        field = '__all__'
+        fields = '__all__'
 
+class RegisterSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True, required=True)
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password']
+
+    def create(self, validated_data):
+        user = User.objects.create_user(
+            username=validated_data['username'],
+            email=validated_data.get('email', ''),
+            password=validated_data['password']
+        )
+        return user
 
 class JournalEntrySerializer(serializers.ModelSerializer):
     class Meta:
         model = JournalEntry
-        field = '__all__'
+        fields = '__all__'
 
 class ConversationModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Conversation
-        field = '__all__'
+        fields = '__all__'
 
 class ParticipantModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Participant
-        field = '__all__'
+        fields = '__all__'
 
 class ChatMessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = ChatMessage
-        field = '__all__'
+        fields = '__all__'
     

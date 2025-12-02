@@ -5,6 +5,7 @@ import { HapticTab } from '@/components/haptic-tab';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
+import { red } from 'react-native-reanimated/lib/typescript/Colors';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -31,10 +32,10 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name='chats'
+        name='chat'
         options={{
-          title: 'chats',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name='bubble.left' color={color} />,
+          title: 'Chat',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name='bubble.left.and.bubble.right.fill' color={color} />,
         }}>
         </Tabs.Screen>
     </Tabs>

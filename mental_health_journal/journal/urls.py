@@ -7,6 +7,7 @@ from .views import JournalDestroyAPIView
 from .views import UserRegisterAPIView
 from .views import UserListAPIView
 from .views import UserRetrieveUpdateAPIView
+from .views import JournalListAPIView
 
 
 urlpatterns = [
@@ -15,7 +16,7 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     # Journal endpoints
-    path('journals/', JournalListAPIView.as_view(), name='journal_list')
+    path('journals/', JournalListAPIView.as_view(), name='journal_list'),
     path('journals/<int:pk>/', JournalDetailAPIView.as_view(), name='journal-detail'),
     path('journals/<int:pk>/update/', JournalUpdateAPIView.as_view(), name='journal-update'),
     path('journals/', JournalCreateAPIView.as_view(), name='journal-create'),
